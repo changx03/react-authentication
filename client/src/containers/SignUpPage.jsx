@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import SignUpForm from '../components/signup-form';
+import SignUpForm from '../components/SignUpForm';
 
 export default class SignUpPage extends Component {
   constructor(props) {

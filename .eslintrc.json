@@ -1,5 +1,8 @@
 {
   "parser": "babel-eslint",
   "extends": "airbnb",
-  "plugins": ["react", "import"]
+  "plugins": ["react", "import"],
+  "rules": {
+    "comma-dangle": [2, "never"]
+  }
 }

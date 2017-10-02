@@ -2,21 +2,26 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import SignUpPage from './containers/signup-page.jsx';
-import HomePage from './components/home-page.jsx';
-import Base from './components/base.jsx';
+import Base from './components/Base';
+import HomePage from './components/HomePage';
+import LogingPage from './containers/LoginPage';
+import SignUpPage from './containers/SignUpPage';
+
+injectTapEventPlugin();
 
 ReactDom.render(
-  <MuiThemeProvider muiTheme={getMuiTheme()}>
-    <BrowserRouter>
+  <BrowserRouter>
+    <MuiThemeProvider muiTheme={getMuiTheme()}>
       <Base>
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/signup" component={SignUpPage} />
+          <Route path="/login" component={LogingPage} />
         </Switch>
       </Base>
-    </BrowserRouter>
-  </MuiThemeProvider>,
-  document.getElementById('app'),
+    </MuiThemeProvider>
+  </BrowserRouter>,
+  document.getElementById('app')
 );

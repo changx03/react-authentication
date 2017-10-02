@@ -14,6 +14,7 @@ function LoginForm({ onSubmit, onChange, errors, user }) {
           <TextField
             floatingLabelText="Email"
             name="email"
+            type="email"
             errorText={errors.email}
             onChange={onChange}
             value={user.email}
@@ -22,8 +23,8 @@ function LoginForm({ onSubmit, onChange, errors, user }) {
         <div className="field-line">
           <TextField
             floatingLabelText="Password"
-            type="password"
             name="password"
+            type="password"
             onChange={onChange}
             errorText={errors.password}
             value={user.password}

@@ -24,6 +24,7 @@ function SignUpForm({ onSubmit, onChange, errors, user }) {
           <TextField
             floatingLabelText="Email"
             name="email"
+            type="email"
             errorText={errors.email}
             onChange={onChange}
             value={user.email}
@@ -33,6 +34,7 @@ function SignUpForm({ onSubmit, onChange, errors, user }) {
           <TextField
             floatingLabelText="Password"
             name="password"
+            type="password"
             errorText={errors.password}
             onChange={onChange}
             value={user.password}
@@ -53,7 +55,7 @@ SignUpForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired
 };
 
 export default SignUpForm;
