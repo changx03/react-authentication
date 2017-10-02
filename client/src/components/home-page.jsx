@@ -1,10 +1,12 @@
-import React from "react";
-import { Card, CardTitle } from "material-ui/Card";
+import React from 'react';
+import { Card, CardTitle } from 'material-ui/Card';
 
-const HomePage = () => (
+function HomePage() {
+  return (
     <Card className="container">
-        <CardTitle title="React application" subtitle="Let's have some fun!" />
+      <CardTitle title="React application" subtitle="Let's have some fun!" />
     </Card>
-);
+  );
+}
 
 export default HomePage;
