@@ -10,8 +10,8 @@ export default class SignUpPage extends Component {
       user: {
         email: '',
         name: '',
-        password: '',
-      },
+        password: ''
+      }
     };
     this.processForm = this.processForm.bind(this);
     this.changeUser = this.changeUser.bind(this);
@@ -22,7 +22,7 @@ export default class SignUpPage extends Component {
     const user = this.state.user;
     user[field] = e.target.value;
     this.setState({
-      user,
+      user
     });
   }
 
@@ -44,7 +44,7 @@ export default class SignUpPage extends Component {
 
         // change the component-container state
         this.setState({
-          errors: {},
+          errors: {}
         });
 
         console.log('The form is valid');
@@ -55,7 +55,7 @@ export default class SignUpPage extends Component {
         errors.summary = xhr.response.message;
 
         this.setState({
-          errors,
+          errors
         });
       }
     });

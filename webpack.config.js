@@ -8,10 +8,10 @@ module.exports = {
   // the bundle file we will get in the result
   output: {
     path: path.join(__dirname, '/client/dist/js'),
-    filename: 'app.bundle.js',
+    filename: 'app.bundle.js'
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx']
   },
   module: {
     // apply loaders to files that meet given conditions
@@ -22,9 +22,9 @@ module.exports = {
         exclude: /(node_modules)/,
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'env'],
-        },
-      },
-    ],
-  },
+          presets: ['react', 'env']
+        }
+      }
+    ]
+  }
 };
