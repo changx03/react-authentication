@@ -8,6 +8,7 @@ import Base from './components/Base';
 import HomePage from './components/HomePage';
 import LogingPage from './containers/LoginPage';
 import SignUpPage from './containers/SignUpPage';
+import Auth from './modules/Auth';
 
 injectTapEventPlugin();
 
@@ -16,7 +17,7 @@ ReactDom.render(
     <MuiThemeProvider muiTheme={getMuiTheme()}>
       <Base>
         <Switch>
-          <Route exact path="/" component={HomePage} />
+          <Route exact path="/" component={Auth.isUserAuthenticated() ? DashboardPage : HomePage} />
           <Route path="/signup" component={SignUpPage} />
           <Route path="/login" component={LogingPage} />
         </Switch>

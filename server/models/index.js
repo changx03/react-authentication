@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const User = require('./user');
+// const User = require('./user');
 
 module.exports.connect = (uri) => {
   mongoose.connect(uri, {
