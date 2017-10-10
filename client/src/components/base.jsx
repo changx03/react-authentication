@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
+import Auth from '../modules/Auth';
 
 function Base({ children }) {
   return (
@@ -9,10 +10,16 @@ function Base({ children }) {
         <div className="top-bar-left">
           <NavLink to="/">React App</NavLink>
         </div>
-        <div className="top-bar-right">
-          <Link to="/login">Log in</Link>
-          <Link to="/signup">Sign up</Link>
-        </div>
+        {Auth.isUserAuthenticated() ? (
+          <div className="top-bar-right">
+            <Link to="/logout">Log out</Link>
+          </div>
+        ) : (
+          <div className="top-bar-right">
+            <Link to="/login">Log in</Link>
+            <Link to="/signup">Sign up</Link>
+          </div>
+        )}
       </div>
       {children}
     </div>
@@ -20,7 +27,7 @@ function Base({ children }) {
 }
 
 Base.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.object.isRequired
 };
 
 export default Base;

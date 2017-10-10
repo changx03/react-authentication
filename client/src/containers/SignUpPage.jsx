@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import SignUpForm from '../components/SignUpForm';
+import SignUpForm from '../components/SignUpForm.jsx';
 
-export default class SignUpPage extends Component {
-  constructor(props) {
-    super(props);
+class SignUpPage extends Component {
+  constructor(props, context) {
+    super(props, context);
     this.state = {
       errors: {},
       user: {
@@ -19,7 +19,7 @@ export default class SignUpPage extends Component {
 
   changeUser(e) {
     const field = e.target.name;
-    const user = this.state.user;
+    const { user } = this.state;
     user[field] = e.target.value;
     this.setState({
       user
@@ -47,7 +47,11 @@ export default class SignUpPage extends Component {
           errors: {}
         });
 
-        console.log('The form is valid');
+        // set a message
+        localStorage.setItem('successMessage', xhr.response.message);
+
+        // success redirect
+        this.context.router.replace('/login');
       } else {
         // failure
 
@@ -73,3 +77,9 @@ export default class SignUpPage extends Component {
     );
   }
 }
+
+SignUpPage.contextTypes = {
+  router: PropTypes.object.isRequired
+};
+
+export default SignUpPage;

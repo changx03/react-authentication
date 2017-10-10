@@ -4,5 +4,11 @@
   "plugins": ["react", "import"],
   "rules": {
     "comma-dangle": [2, "never"]
+  },
+  "globals": {
+    "document": true,
+    "localStorage": true,
+    "window": true,
+    "XMLHttpRequest": true
   }
 }

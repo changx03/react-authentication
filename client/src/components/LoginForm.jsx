@@ -1,15 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
-function LoginForm({ onSubmit, onChange, errors, user }) {
+function LoginForm({
+  onSubmit, onChange, errors, user, successMessage
+}) {
   return (
     <Card className="container">
       <form action="/" onSubmit={onSubmit}>
         <h2 className="card-heading">Login</h2>
         {errors.summary && <p className="error-message">{errors.summary}</p>}
+        {successMessage && <p className="success-message">{successMessage}</p>}
         <div className="field-line">
           <TextField
             floatingLabelText="Email"
@@ -42,5 +46,13 @@ function LoginForm({ onSubmit, onChange, errors, user }) {
     </Card>
   );
 }
+
+LoginForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired,
+  successMessage: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired
+};
 
 export default LoginForm;
