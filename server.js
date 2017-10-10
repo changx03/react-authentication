@@ -1,8 +1,8 @@
 const express = require('express');
-const path = require('path');
+// const path = require('path');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-const config = require('./config');
+const config = require('./config/config');
 const authRoutes = require('./server/routes/auth');
 const localSignupStrategy = require('./server/passport/local-signup');
 const localLoginStrategy = require('./server/passport/local-login');
@@ -31,6 +31,8 @@ app.use('/api', authCheckMiddleware);
 // routes
 app.use('/api', apiRoutes);
 app.use('/auth', authRoutes);
+
+// Route all url to React app
 // app.get(/.*/, (req, res) => {
 //   res.sendFile(path.join(`${__dirname}/server/static/index.html`));
 // });
