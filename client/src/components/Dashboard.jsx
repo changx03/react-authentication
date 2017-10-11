@@ -14,7 +14,7 @@ function Dashboard({ secretData }) {
   );
 }
 
-Dashboard.PropTypes = {
+Dashboard.propTypes = {
   secretData: PropTypes.string.isRequired
 };
 

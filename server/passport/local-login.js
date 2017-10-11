@@ -32,7 +32,7 @@ module.exports = new PassportLocalStrategy(
           return done(credErr);
         }
 
-        return user.comparePassword(userData.password, (password, isMatch) => {
+        return user.comparePassword(userData.password, (cPassword, isMatch) => {
           if (err) {
             return done(err);
           }
