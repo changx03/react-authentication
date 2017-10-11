@@ -58,10 +58,10 @@ function validateLoginForm(payload) {
   };
 }
 
-router.post('/signup', (req, res) => {
+router.post('/signup', (req, res, next) => {
   const validationResult = validateSignupForm(req.body);
   if (!validationResult.success) {
-    return res.status(500).json({
+    return res.status(400).json({
       success: false,
       message: validationResult.message,
       errors: validationResult.errors
@@ -90,12 +90,11 @@ router.post('/signup', (req, res) => {
       success: true,
       message: 'You have successfully signed up! Now you should be able to log in.'
     });
-  });
-  // (req, res, next);
+  })(req, res, next);
 });
 
-router.post('/login', (req, res) => {
-  const validationResult = validateSignupForm(req.body);
+router.post('/login', (req, res, next) => {
+  const validationResult = validateLoginForm(req.body);
   if (!validationResult.success) {
     return res.status(400).json({
       success: false,
@@ -125,7 +124,7 @@ router.post('/login', (req, res) => {
       token,
       user: userData
     });
-  });
+  })(req, res, next);
 });
 
 module.exports = router;
