@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import Auth from '../modules/Auth';
 import LoginForm from '../components/LoginForm.jsx';
 
@@ -20,7 +21,8 @@ class LoginPage extends React.Component {
         email: '',
         password: ''
       },
-      successMessage
+      successMessage,
+      redirectToReferrer: false
     };
 
     this.processForm = this.processForm.bind(this);
@@ -48,7 +50,10 @@ class LoginPage extends React.Component {
         });
 
         Auth.authenticateUser(xhr.response.token);
-        this.context.router.replace('/');
+        // this.context.router.replace('/');
+        this.setState({
+          redirectToReferrer: true
+        });
       } else {
         // Failure
 
@@ -73,6 +78,10 @@ class LoginPage extends React.Component {
   }
 
   render() {
+    if (this.state.redirectToReferrer) {
+      return <Redirect to={{ pathname: '/' }} />;
+    }
+
     return (
       <LoginForm
         onSubmit={this.processForm}

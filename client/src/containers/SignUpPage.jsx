@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import SignUpForm from '../components/SignUpForm.jsx';
 
 class SignUpPage extends Component {
@@ -11,7 +12,8 @@ class SignUpPage extends Component {
         email: '',
         name: '',
         password: ''
-      }
+      },
+      redirectToReferrer: false
     };
     this.processForm = this.processForm.bind(this);
     this.changeUser = this.changeUser.bind(this);
@@ -51,7 +53,10 @@ class SignUpPage extends Component {
         localStorage.setItem('successMessage', xhr.response.message);
 
         // success redirect
-        this.context.router.replace('/login');
+        this.setState({
+          redirectToReferrer: true
+        });
+        // this.context.router.replace('/login');
       } else {
         // failure
 
@@ -67,6 +72,10 @@ class SignUpPage extends Component {
   }
 
   render() {
+    if (this.state.redirectToReferrer) {
+      return <Redirect to={{ pathname: '/login' }} />;
+    }
+
     return (
       <SignUpForm
         onSubmit={this.processForm}

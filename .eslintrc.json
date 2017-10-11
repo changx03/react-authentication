@@ -3,7 +3,16 @@
   "extends": "airbnb-base",
   "plugins": ["react", "import"],
   "rules": {
-    "comma-dangle": [2, "never"]
+    "strict": 0,
+    "comma-dangle": ["error", "never"]
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jquery": true
+  },
+  "parserOptions": {
+    "sourceType": "module"
   },
   "globals": {
     "document": true,
