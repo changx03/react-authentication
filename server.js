@@ -1,12 +1,12 @@
 const express = require('express');
-// const path = require('path');
+const path = require('path');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const config = require('./config/config');
 const authRoutes = require('./server/routes/auth');
 const localSignupStrategy = require('./server/passport/local-signup');
 const localLoginStrategy = require('./server/passport/local-login');
-const authCheckMiddleware = require('./server/middleware/auth-check');
+const authCheck = require('./server/middleware/auth-check');
 const apiRoutes = require('./server/routes/api');
 
 // Connect to the database and load models
@@ -26,16 +26,16 @@ passport.use('local-signup', localSignupStrategy);
 passport.use('local-login', localLoginStrategy);
 
 // pass the authenticaion checker middleware
-app.use('/api', authCheckMiddleware);
+app.use('/api', authCheck);
 
 // routes
 app.use('/api', apiRoutes);
 app.use('/auth', authRoutes);
 
 // Route all url to React app
-// app.get(/.*/, (req, res) => {
-//   res.sendFile(path.join(`${__dirname}/server/static/index.html`));
-// });
+app.get(/.*/, (req, res) => {
+  res.sendFile(path.join(`${__dirname}/server/static/index.html`));
+});
 
 app.listen(app.get('port'), () => {
   console.log(`Express started on http://localhost:${app.get('port')} press Ctrl-C to terminate`);

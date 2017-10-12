@@ -79,7 +79,7 @@ class LoginPage extends React.Component {
 
   render() {
     if (this.state.redirectToReferrer) {
-      return <Redirect to={{ pathname: '/' }} />;
+      return <Redirect to={{ pathname: '/dashboard' }} />;
     }
 
     return (

@@ -23,6 +23,7 @@ module.exports = function authCheck(req, res, next) {
       if (userErr || !user) {
         return res.status(401).end();
       }
+      res.locals.username = user.name;
       return next();
     });
   });
